@@ -8,15 +8,15 @@ public class PlaySoundByButton : MonoBehaviour
 
     private void OnEnable()
     {
-        _button.onClick.AddListener(delegate { PlayOneShot(); });
+        _button.onClick.AddListener(Play);
     }
 
     private void OnDisable()
     {
-        _button.onClick.RemoveListener(delegate { PlayOneShot(); });
+        _button.onClick.RemoveListener(Play);
     }
 
-    private void PlayOneShot()
+    private void Play()
     {
         _audioSource.PlayOneShot(_audioSource.clip);
     }

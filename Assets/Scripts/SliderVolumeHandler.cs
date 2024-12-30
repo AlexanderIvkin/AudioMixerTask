@@ -10,24 +10,23 @@ public class SliderVolumeHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        _slider.onValueChanged.AddListener(delegate { SetValue(); });
+        _slider.onValueChanged.AddListener(SetValue);
     }
 
     private void OnDisable()
     {
-        _slider.onValueChanged.RemoveListener(delegate { SetValue(); });
-        
+        _slider.onValueChanged.RemoveListener(SetValue); 
     }
 
-    private void SetValue()
+    private void SetValue(float value)
     {
-        _mixer.audioMixer.SetFloat(_mixerParameterName, ConvertValue());
+        _mixer.audioMixer.SetFloat(_mixerParameterName, ConvertValue(value));
     }
 
-    private float ConvertValue()
+    private float ConvertValue(float value)
     {
         float factor = 20;
 
-        return Mathf.Log10(_slider.value) * factor;
+        return Mathf.Log10(value) * factor;
     }
 }
