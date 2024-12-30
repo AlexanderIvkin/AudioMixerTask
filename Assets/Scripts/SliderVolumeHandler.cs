@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class SliderVolumeHandler : MonoBehaviour
 {
-    [SerializeField] private string _mixerParameterName;
     [SerializeField] private Slider _slider;
     [SerializeField] private AudioMixerGroup _mixer;
 
@@ -20,7 +19,7 @@ public class SliderVolumeHandler : MonoBehaviour
 
     private void SetValue(float value)
     {
-        _mixer.audioMixer.SetFloat(_mixerParameterName, ConvertValue(value));
+        _mixer.audioMixer.SetFloat(_mixer.name, ConvertValue(value));
     }
 
     private float ConvertValue(float value)
